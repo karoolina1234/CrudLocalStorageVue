@@ -1,0 +1,28 @@
+@import "./base.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#app {
+  background-color: #f7f5fd;
+  height: 100vh;
+}
+.contentForm {
+  width: 100%;
+  text-align: center;
+}
+
+input,
+label {
+  text-align: left;
+}
+
+.navMenu a {
+  color: rgb(167 139 250);
+  margin: 0.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+.navMenu a:hover {
+  color: rgb(16 185 129);
+}
