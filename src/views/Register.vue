@@ -78,10 +78,13 @@
 </template>
 
 <script>
+import { v4 as uuidv4 } from "uuid";
+
 export default {
   data() {
     return {
       pet: {
+        id: null,
         name: "",
         age: 0,
         breed: "",
@@ -102,10 +105,19 @@ export default {
       }
     },
     savePet() {
+      this.pet.id = uuidv4();
+
       let pets = JSON.parse(localStorage.getItem("pets")) || [];
       pets.push(this.pet);
       localStorage.setItem("pets", JSON.stringify(pets));
-      this.pet = { name: "", age: 0, breed: "", species: "", img: null };
+      this.pet = {
+        id: null,
+        name: "",
+        age: 0,
+        breed: "",
+        species: "",
+        img: null,
+      };
     },
   },
 };

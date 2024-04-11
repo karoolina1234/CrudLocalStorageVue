@@ -8,6 +8,9 @@
   height: auto;
   min-height: 100vh;
 }
+#petimg {
+  height: 35rem;
+}
 .contentForm {
   width: 100%;
   text-align: center;

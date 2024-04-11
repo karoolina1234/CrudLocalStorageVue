@@ -5,10 +5,13 @@
       alt=""
       class="w-screen object-cover h-96"
     />
-    <h2 class="text-yellow-500 font-bold text-xl text-center">
+    <h2 class="text-yellow-500 font-bold text-xl text-center mt-3">
       Listagem de animais
     </h2>
-    <div class="grid grid-cols-5 grid-rows-5 p-5">
+    <div
+      class="grid sm:grid-cols-2 sm:grid-rows-2 md:grid-cols-5 md:grid-rows-5 p-5"
+      v-if="pets.length > 0"
+    >
       <div
         class="mx-2 text-blue-800 shadow-md text-center m-3 p-4"
         v-for="(pet, index) in pets"
@@ -18,14 +21,20 @@
         <strong>{{ pet.name }}</strong> ({{ pet.species }})<br />
         Idade: {{ pet.age }}, Raça: {{ pet.breed }}<br />
         <div class="text-sm mt-2">
-          <button
+          <router-link
             class="bg-yellow-500 hover:bg-yellow-400 w-full text-white font-bold p-1 rounded focus:outline-none focus:shadow-outline"
-            @click="removePet(index)"
+            :to="{ name: 'detail', params: { id: pet.id } }"
           >
             Quero adotar
-          </button>
+          </router-link>
         </div>
       </div>
+    </div>
+    <div class="text-center" v-else>
+      <h2 class="text-xl font-bold text-blue-800 mt-7">
+        Ops nenhum pet disponível no momento
+      </h2>
+      <img src="/public/img/bicho-de-estimacao.png" class="w-20 inline mt-4" />
     </div>
   </div>
 </template>
@@ -44,10 +53,7 @@ export default {
     getPets() {
       this.pets = JSON.parse(localStorage.getItem("pets")) || [];
     },
-    removePet(index) {
-      this.pets.splice(index, 1);
-      localStorage.setItem("pets", JSON.stringify(this.pets));
-    },
+
   },
 };
 </script>
