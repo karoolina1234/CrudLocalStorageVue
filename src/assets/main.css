@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 #app {
-  background-color: #f7f5fd;
+  background-color: #e1e1f533;
   height: 100vh;
 }
 .contentForm {
@@ -16,13 +16,16 @@ input,
 label {
   text-align: left;
 }
-
+.navMenu {
+  padding: 1rem;
+  background-color: rgb(30 58 138);
+}
 .navMenu a {
-  color: rgb(167 139 250);
+  color: #fff;
   margin: 0.5rem;
   font-weight: bold;
   margin-bottom: 2rem;
 }
 .navMenu a:hover {
-  color: rgb(16 185 129);
+  color: #ff9800;
 }
