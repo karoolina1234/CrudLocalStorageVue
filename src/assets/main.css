@@ -5,13 +5,16 @@
 
 #app {
   background-color: #e1e1f533;
-  height: 100vh;
+  height: auto;
+  min-height: 100vh;
 }
 .contentForm {
   width: 100%;
   text-align: center;
 }
-
+input {
+  color: #000;
+}
 input,
 label {
   text-align: left;

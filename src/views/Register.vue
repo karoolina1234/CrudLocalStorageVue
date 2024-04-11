@@ -52,6 +52,19 @@
         />
       </div>
 
+      <div class="mb-1">
+        <label for="species" class="block text-sm font-bold mb-1"
+          >Imagem:</label
+        >
+        <input
+          type="file"
+          id="img"
+          @change="handleImageUpload"
+          required
+          class="shadow appearance-none border rounded w-full py-2 px-3leading-tight focus:outline-none focus:shadow-outline"
+        />
+      </div>
+
       <div class="mt-5 text-right">
         <button
           type="submit"
@@ -73,15 +86,26 @@ export default {
         age: 0,
         breed: "",
         species: "",
+        img: null,
       },
     };
   },
   methods: {
+    handleImageUpload(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+          this.pet.img = reader.result;
+        };
+      }
+    },
     savePet() {
       let pets = JSON.parse(localStorage.getItem("pets")) || [];
       pets.push(this.pet);
       localStorage.setItem("pets", JSON.stringify(pets));
-      this.pet = { name: "", age: 0, breed: "", species: "" };
+      this.pet = { name: "", age: 0, breed: "", species: "", img: null };
     },
   },
 };
